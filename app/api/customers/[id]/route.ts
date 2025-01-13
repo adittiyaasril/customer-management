@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { validate as isUUID } from "uuid";
+import type { NextRequest } from "next/server";
 
 export async function GET(
-  request: Request,
-  context: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await context.params;
+  const { id } = await params;
 
   if (!id || !isUUID(id)) {
     return NextResponse.json(
@@ -40,10 +41,10 @@ export async function GET(
 }
 
 export async function PUT(
-  request: Request,
-  context: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await context.params;
+  const { id } = await params;
   console.log("Updating customer with ID:", id);
 
   if (!id || !isUUID(id)) {
