@@ -40,11 +40,8 @@ export async function GET(request: Request, { params }: Props) {
   }
 }
 
-export async function PUT(
-  request: Request,
-  context: { params: { id: string } }
-) {
-  const { id } = await context.params;
+export async function PUT(request: Request, { params }: Props) {
+  const { id } = await params;
   console.log("Updating customer with ID:", id);
 
   if (!id || !isUUID(id)) {
