@@ -10,14 +10,16 @@ import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
+  title: "Customer Management App",
+  description: "Application to manage customer data",
+  manifest: "/manifest.json",
   icons: {
-    icon: "/favicon.ico",
+    apple: [
+      { url: "/icons/icon-192x192.png" },
+      { url: "/icons/icon-512x512.png", sizes: "512x512" },
+    ],
   },
+  themeColor: "#000000",
 };
 
 export const viewport: Viewport = {
@@ -36,6 +38,10 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <Head>
         <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="CustApp" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#000000" />
       </Head>
       <body
